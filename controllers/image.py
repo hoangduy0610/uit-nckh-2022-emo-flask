@@ -1,11 +1,24 @@
 from __main__ import app
 
-from flask import request
-from services.image import image_process_service
+from flask import jsonify, make_response, request
+from common.utils import generate_random_image_path
+from services.image import confirm_image_service, image_process_service
 
 def image_process_controller():
     print("render process request")
     data = request.files["img"]
-    data.save("img.jpg")
+    f_name = generate_random_image_path()
+    data.save(f_name)
 
-    return image_process_service('img.jpg', 'ML_Model/data.pt')
+    return image_process_service(f_name, 'ML_Model/data.pt')
+
+def confirm_image_controller():
+    body = request.get_json()
+    f_name = body['img_path']
+    result = confirm_image_service(f_name)
+
+    return make_response(
+        jsonify(result),
+        result['code'],
+        {}
+    )

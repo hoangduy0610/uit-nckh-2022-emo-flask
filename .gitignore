@@ -1,1 +1,3 @@
 __pycache__
+uploads/faces/*.jpg
+public/faces/*.jpg

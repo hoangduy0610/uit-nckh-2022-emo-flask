@@ -1,5 +1,8 @@
 
 
+from datetime import datetime
+import os
+import shutil
 from deepface import DeepFace
 from flask import jsonify
 from ML_Model.handle import face_match
@@ -12,15 +15,34 @@ def image_process_service(img_path, data_path):
     print(face_analysis[0]['emotion'])
     print(face_analysis[0]['dominant_emotion'])
 
-    if result[1] > 0.8:
-        return jsonify(
-            name="Unknown",
-            emotion=None,
-            dominant_emotion=None
-        )
+    f_path=img_path
+    name=result[0]
+    conf=1
+
+    if result[1] > 1:
+        f_path=None
+        name="Unknown"
+
+    elif result[1] > 0.7:
+        conf=0
 
     return jsonify(
-        name=result[0],
+        name=name,
+        img_path=f_path,
+        conf=conf,
+        distance=result[1],
         emotion=face_analysis[0]['emotion'],
         dominant_emotion=face_analysis[0]['dominant_emotion']
     )
+
+
+def confirm_image_service(img_path):
+    filename = os.path.basename(img_path)
+    destination_path = os.path.join('public/faces', filename)
+    shutil.move(img_path, destination_path)
+    return {
+        'code':200,
+        'message':'Image confirmed',
+        'result':True,
+        'data':destination_path
+    }
