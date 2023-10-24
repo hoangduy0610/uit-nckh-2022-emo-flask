@@ -15,7 +15,7 @@ def getUserById(id):
     return User.query.filter_by(id=id, deleted_at=None).first()
 
 def getAllUsers():
-    return User.query.all()
+    return User.query.filter_by(deleted_at=None).all()
 
 def updateUser(id, username, password, name):
     user = getUserById(id)

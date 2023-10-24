@@ -14,7 +14,7 @@ def image_process_controller():
 
 def confirm_image_controller():
     body = request.get_json()
-    f_name = body['img_path']
+    f_name = body['id']
     result = confirm_image_service(f_name)
 
     return make_response(
