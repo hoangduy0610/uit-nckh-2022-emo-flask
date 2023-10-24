@@ -16,18 +16,18 @@ def image_process_service(img_path, data_path):
     print(face_analysis[0]['dominant_emotion'])
 
     f_path=img_path
-    name=result[0]
+    id=result[0]
     conf=1
 
     if result[1] > 1:
         f_path=None
-        name="Unknown"
+        id=None
 
     elif result[1] > 0.7:
         conf=0
 
     return jsonify(
-        name=name,
+        id=id,
         img_path=f_path,
         conf=conf,
         distance=result[1],
