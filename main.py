@@ -17,6 +17,7 @@ def main():
 
 import routes.auth
 import routes.image
+import routes.log
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=8933, debug=True)

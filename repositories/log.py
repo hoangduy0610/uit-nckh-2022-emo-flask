@@ -67,3 +67,6 @@ def getLogsByStudentIdAndDate(student_id, date):
 
 def getLogsByDate(date):
     return Log.query.filter_by(created_at=date, deleted_at=None).all()
+
+def getLogsByDateRange(from_date, to_date):
+    return Log.query.filter(Log.created_at.between(from_date, to_date), Log.deleted_at==None).all()

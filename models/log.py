@@ -46,4 +46,9 @@ class Log(db.Model, Serializer):
     
     def serialize(self):
         d = Serializer.serialize(self)
+        # Convert the 'student' attribute to a serializable format
+        d['student'] = {
+            'id': self.student.id,
+            'name': self.student.name,  # Add other student fields as needed
+        }
         return d
