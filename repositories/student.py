@@ -40,7 +40,7 @@ def deleteStudent(id):
     return student
 
 def restoreStudent(id):
-    student = getStudentById(id)
+    student = getStudentByIdIncludingDeleted(id)
     student.deleted_at = None
     db.session.commit()
     return student
