@@ -52,7 +52,7 @@ def register_service(username, password, name):
             'code': 400
         }
   
-    user = createNewUser(username, generate_password_hash(password, method='sha256'), name)
+    user = createNewUser(username, generate_password_hash(password, method='scrypt'), name)
     return {
         'status': True,
         'message': 'Successfully registered',
