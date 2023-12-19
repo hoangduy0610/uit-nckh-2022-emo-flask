@@ -4,7 +4,7 @@ from  werkzeug.security import generate_password_hash, check_password_hash
 import jwt
 
 from common.constants import SECRET_KEY
-from repositories.student import createNewStudent, deleteStudent, getAllStudentsIncludingDeleted, getStudentById, restoreStudent, updateStudent
+from repositories.student import createNewStudent, deleteStudent, getAllStudentsIncludingDeleted, getStudentById, getStudentByIdIncludingDeleted, restoreStudent, updateStudent
 
 def get_all_students_service():
     students = getAllStudentsIncludingDeleted()
