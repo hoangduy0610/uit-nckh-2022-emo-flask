@@ -12,6 +12,9 @@ def getAllStudentsIncludingDeleted():
 def getStudentById(id):
     return Student.query.filter_by(id=id, deleted_at=None).first()
 
+def getStudentByIdIncludingDeleted(id):
+    return Student.query.filter_by(id=id).first()
+
 def createNewStudent(id, name, age):
     newStudent = Student(id, name, age)
     db.session.add(newStudent)

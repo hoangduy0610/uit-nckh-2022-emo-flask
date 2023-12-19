@@ -105,7 +105,7 @@ def delete_student_service(student_id):
     }
 
 def restore_student_service(student_id):
-    student = getStudentById(student_id)
+    student = getStudentByIdIncludingDeleted(student_id)
 
     if not student:
         # returns 404 if student does not exist
