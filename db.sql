@@ -5,7 +5,7 @@
 -- Dumped from database version 11.21
 -- Dumped by pg_dump version 15.3
 
--- Started on 2023-10-24 22:46:25
+-- Started on 2023-12-26 00:09:41
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -76,7 +76,8 @@ CREATE TABLE public.students (
     name character varying(255) NOT NULL,
     created_at timestamp with time zone DEFAULT now() NOT NULL,
     updated_at timestamp with time zone DEFAULT now() NOT NULL,
-    deleted_at timestamp with time zone
+    deleted_at timestamp with time zone,
+    age integer
 );
 
 
@@ -161,7 +162,7 @@ REVOKE USAGE ON SCHEMA public FROM PUBLIC;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2023-10-24 22:46:25
+-- Completed on 2023-12-26 00:09:41
 
 --
 -- PostgreSQL database dump complete
