@@ -1,5 +1,5 @@
 __pycache__
 uploads/faces/**
 public/faces/**
-ML_Models/photos
-ML_Models/test_images
+ML_Model/photos
+ML_Model/test_images
